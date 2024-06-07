@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Georgia', serif;
-            background-image: url('https://wall.alphacoders.com/big.php?i=1339726');
+            background-image: url('https://images.alphacoders.com/133/thumb-1920-1339726.png');
             background-size: cover;
             background-attachment: fixed;
             background-repeat: no-repeat;
@@ -38,6 +38,18 @@
         .book-item {
             border-bottom: 1px solid #ddd;
             padding: 10px 0;
+            position: relative;
+        }
+        .book-item button {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            background-color: #5e4534;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
         .metrics {
             text-align: center;
@@ -68,22 +80,27 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        .add-book-form {
+        .add-book-form,
+        .edit-book-form {
             display: none;
             flex-direction: column;
             margin-top: 20px;
         }
         .add-book-form input,
-        .add-book-form select {
+        .add-book-form select,
+        .edit-book-form input,
+        .edit-book-form select {
             margin-bottom: 10px;
             padding: 8px;
             font-size: 1em;
         }
-        .add-book-form label {
+        .add-book-form label,
+        .edit-book-form label {
             font-size: 1.2em;
             color: #5e4534;
         }
-        .add-book-form button {
+        .add-book-form button,
+        .edit-book-form button {
             background-color: #5e4534;
             color: #fff;
             padding: 10px;
@@ -95,7 +112,7 @@
 </head>
 <body>
     <h1>Andrew's Bookshelf</h1>
-    <button class="add-book-button" onclick="toggleForm()">Add New Book</button>
+    <button class="add-book-button" onclick="toggleForm('add')">Add New Book</button>
     <div class="container">
         <form class="add-book-form" id="add-book-form" onsubmit="addBook(event)">
             <label for="title">Book Title:</label>
@@ -116,6 +133,26 @@
             </select>
             <button type="submit">Add Book</button>
         </form>
+        <form class="edit-book-form" id="edit-book-form" onsubmit="updateBook(event)">
+            <input type="hidden" id="edit-index">
+            <label for="edit-title">Book Title:</label>
+            <input type="text" id="edit-title" name="edit-title" required>
+            <label for="edit-author">Author:</label>
+            <input type="text" id="edit-author" name="edit-author" required>
+            <label for="edit-pages">Number of Pages:</label>
+            <input type="number" id="edit-pages" name="edit-pages" required>
+            <label for="edit-date">Date Completed:</label>
+            <input type="date" id="edit-date" name="edit-date" required>
+            <label for="edit-stars">Stars:</label>
+            <select id="edit-stars" name="edit-stars" required>
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select>
+            <button type="submit">Update Book</button>
+        </form>
         <ul class="book-list" id="book-list">
             <!-- Book entries will go here -->
         </ul>
@@ -135,7 +172,7 @@
 
         const currentBook = {
             title: "C is for Corpse",
-            cover: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388179242l/89656.jpg"
+            cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtzoc4IS3C4r1rZuwDvJ4IsvW1B_6vjIZJow&s"
         };
 
         const bookList = document.getElementById('book-list');
@@ -143,27 +180,37 @@
         const currentBookCover = document.getElementById('current-book-cover');
         const currentBookTitle = document.getElementById('current-book-title');
         const addBookForm = document.getElementById('add-book-form');
+        const editBookForm = document.getElementById('edit-book-form');
         let totalBooks = books.length;
 
         function displayBooks() {
             bookList.innerHTML = '';
-            books.forEach(book => {
+            books.forEach((book, index) => {
                 const li = document.createElement('li');
                 li.className = 'book-item';
                 li.innerHTML = `
                     <strong>${book.title}</strong> by ${book.author} <br>
                     Pages: ${book.pages}, Completed: ${book.date}, Stars: ${book.stars}
+                    <button onclick="editBook(${index})">Edit</button>
                 `;
                 bookList.appendChild(li);
             });
             totalBooksElement.textContent = totalBooks;
         }
 
-        function toggleForm() {
-            if (addBookForm.style.display === "none" || addBookForm.style.display === "") {
-                addBookForm.style.display = "flex";
-            } else {
+        function toggleForm(type, index) {
+            if (type === 'add') {
+                addBookForm.style.display = addBookForm.style.display === "none" || addBookForm.style.display === "" ? "flex" : "none";
+            } else if (type === 'edit') {
+                editBookForm.style.display = "flex";
                 addBookForm.style.display = "none";
+                const book = books[index];
+                document.getElementById('edit-index').value = index;
+                document.getElementById('edit-title').value = book.title;
+                document.getElementById('edit-author').value = book.author;
+                document.getElementById('edit-pages').value = book.pages;
+                document.getElementById('edit-date').value = book.date;
+                document.getElementById('edit-stars').value = book.stars;
             }
         }
 
@@ -181,6 +228,25 @@
             displayBooks();
             addBookForm.reset();
             addBookForm.style.display = "none";
+        }
+
+        function editBook(index) {
+            toggleForm('edit', index);
+        }
+
+        function updateBook(event) {
+            event.preventDefault();
+            const index = document.getElementById('edit-index').value;
+            books[index] = {
+                title: event.target['edit-title'].value,
+                author: event.target['edit-author'].value,
+                pages: event.target['edit-pages'].value,
+                date: event.target['edit-date'].value,
+                stars: event.target['edit-stars'].value
+            };
+            displayBooks();
+            editBookForm.reset();
+            editBookForm.style.display = "none";
         }
 
         document.addEventListener('DOMContentLoaded', () => {
