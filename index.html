@@ -7,7 +7,11 @@
     <style>
         body {
             font-family: 'Georgia', serif;
-            background-color: #f5f5dc;
+            background-image: url('https://wall.alphacoders.com/big.php?i=1339726');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
             color: #333;
             margin: 0;
             padding: 20px;
@@ -15,7 +19,8 @@
         h1 {
             text-align: center;
             font-size: 3em;
-            color: #5e4534;
+            color: #f5f5dc;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
         .container {
             width: 80%;
@@ -23,7 +28,7 @@
             max-width: 800px;
             border: 1px solid #ddd;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .book-list {
@@ -55,7 +60,7 @@
     </style>
 </head>
 <body>
-    <h1>My Bookshelf</h1>
+    <h1>Andrew's Bookshelf</h1>
     <div class="container">
         <ul class="book-list" id="book-list">
             <!-- Book entries will go here -->
@@ -77,7 +82,7 @@
 
         const currentBook = {
             title: "C is for Corpse",
-            cover: "https://www.goodreads.com/book/show/89656.C_is_for_Corpse"
+            cover: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388179242l/89656.jpg" // Correct URL for book cover image
         };
 
         const bookList = document.getElementById('book-list');
