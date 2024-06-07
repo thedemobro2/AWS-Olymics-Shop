@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookshelf</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f5dc;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            color: #5e4534;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            max-width: 800px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .book-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .book-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .metrics {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Bookshelf</h1>
+    <div class="container">
+        <ul class="book-list" id="book-list">
+            <!-- Book entries will go here -->
+        </ul>
+        <div class="metrics">
+            <p>Total Books Read: <span id="total-books">0</span></p>
+        </div>
+    </div>
+    <script>
+        const books = [
+            { title: "Book Title 1", author: "Author 1", year: 2024 },
+            { title: "Book Title 2", author: "Author 2", year: 2024 }
+            // Add more books here
+        ];
+
+        const bookList = document.getElementById('book-list');
+        const totalBooksElement = document.getElementById('total-books');
+        let totalBooks = books.length;
+
+        books.forEach(book => {
+            const li = document.createElement('li');
+            li.className = 'book-item';
+            li.textContent = `${book.title} by ${book.author} (${book.year})`;
+            bookList.appendChild(li);
+        });
+
+        totalBooksElement.textContent = totalBooks;
+    </script>
+</body>
+</html>
