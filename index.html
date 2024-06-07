@@ -38,6 +38,20 @@
             text-align: center;
             margin-top: 20px;
         }
+        .current-reading {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .current-reading img {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .current-reading p {
+            font-size: 1.2em;
+            color: #5e4534;
+        }
     </style>
 </head>
 <body>
@@ -49,6 +63,10 @@
         <div class="metrics">
             <p>Total Books Read: <span id="total-books">0</span></p>
         </div>
+        <div class="current-reading" id="current-reading">
+            <img src="" alt="Current Book Cover" id="current-book-cover">
+            <p id="current-book-title">Currently Reading: None</p>
+        </div>
     </div>
     <script>
         const books = [
@@ -57,8 +75,15 @@
             // Add more books here
         ];
 
+        const currentBook = {
+            title: "Current Book Title",
+            cover: "URL_TO_CURRENT_BOOK_COVER" // Replace with actual URL to book cover
+        };
+
         const bookList = document.getElementById('book-list');
         const totalBooksElement = document.getElementById('total-books');
+        const currentBookCover = document.getElementById('current-book-cover');
+        const currentBookTitle = document.getElementById('current-book-title');
         let totalBooks = books.length;
 
         books.forEach(book => {
@@ -69,6 +94,14 @@
         });
 
         totalBooksElement.textContent = totalBooks;
+
+        if (currentBook.cover && currentBook.title) {
+            currentBookCover.src = currentBook.cover;
+            currentBookTitle.textContent = `Currently Reading: ${currentBook.title}`;
+        } else {
+            currentBookCover.style.display = 'none';
+            currentBookTitle.textContent = 'Currently Reading: None';
+        }
     </script>
 </body>
 </html>
