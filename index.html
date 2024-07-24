@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew's Bookshelf</title>
+    <title>Andrew's Shop</title>
     <style>
         body {
             font-family: 'Georgia', serif;
-            background-image: url('https://images.alphacoders.com/133/thumb-1920-1339726.png');
+            background-image: url('https://wallpapercave.com/wp/wp12095491.jpg');
             background-size: cover;
             background-attachment: fixed;
             background-repeat: no-repeat;
@@ -23,243 +23,110 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
         .container {
-            width: 80%;
+            width: 90%;
             margin: auto;
-            max-width: 800px;
-            border: 1px solid #ddd;
-            padding: 20px;
+            max-width: 1200px;
             background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
-        .book-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .book-item {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-            position: relative;
-        }
-        .book-item button {
-            position: absolute;
-            right: 0;
-            top: 10px;
-            background-color: #5e4534;
-            color: #fff;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
+        .product {
+            width: 30%;
+            background-color: white;
+            border: 1px solid #ddd;
             border-radius: 5px;
-        }
-        .metrics {
+            margin: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-top: 20px;
         }
-        .current-reading {
-            text-align: center;
-            margin-top: 40px;
-        }
-        .current-reading img {
-            max-width: 200px;
+        .product img {
+            max-width: 100%;
             height: auto;
-            display: block;
-            margin: 0 auto 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
         }
-        .current-reading p {
-            font-size: 1.2em;
+        .product h2 {
+            font-size: 1.5em;
             color: #5e4534;
         }
-        .add-book-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+        .product p {
+            font-size: 1em;
+            color: #333;
+        }
+        .product button {
             background-color: #5e4534;
             color: #fff;
             padding: 10px 20px;
             border: none;
             cursor: pointer;
             border-radius: 5px;
-        }
-        .add-book-form,
-        .edit-book-form {
-            display: none;
-            flex-direction: column;
-            margin-top: 20px;
-        }
-        .add-book-form input,
-        .add-book-form select,
-        .edit-book-form input,
-        .edit-book-form select {
-            margin-bottom: 10px;
-            padding: 8px;
             font-size: 1em;
-        }
-        .add-book-form label,
-        .edit-book-form label {
-            font-size: 1.2em;
-            color: #5e4534;
-        }
-        .add-book-form button,
-        .edit-book-form button {
-            background-color: #5e4534;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Andrew's Bookshelf</h1>
-    <button class="add-book-button" onclick="toggleForm('add')">Add New Book</button>
+    <h1>Andrew's Shop</h1>
     <div class="container">
-        <form class="add-book-form" id="add-book-form" onsubmit="addBook(event)">
-            <label for="title">Book Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author" required>
-            <label for="pages">Number of Pages:</label>
-            <input type="number" id="pages" name="pages" required>
-            <label for="date">Date Completed:</label>
-            <input type="date" id="date" name="date" required>
-            <label for="stars">Stars:</label>
-            <select id="stars" name="stars" required>
-                <option value="1">1 Star</option>
-                <option value="2">2 Stars</option>
-                <option value="3">3 Stars</option>
-                <option value="4">4 Stars</option>
-                <option value="5">5 Stars</option>
-            </select>
-            <button type="submit">Add Book</button>
-        </form>
-        <form class="edit-book-form" id="edit-book-form" onsubmit="updateBook(event)">
-            <input type="hidden" id="edit-index">
-            <label for="edit-title">Book Title:</label>
-            <input type="text" id="edit-title" name="edit-title" required>
-            <label for="edit-author">Author:</label>
-            <input type="text" id="edit-author" name="edit-author" required>
-            <label for="edit-pages">Number of Pages:</label>
-            <input type="number" id="edit-pages" name="edit-pages" required>
-            <label for="edit-date">Date Completed:</label>
-            <input type="date" id="edit-date" name="edit-date" required>
-            <label for="edit-stars">Stars:</label>
-            <select id="edit-stars" name="edit-stars" required>
-                <option value="1">1 Star</option>
-                <option value="2">2 Stars</option>
-                <option value="3">3 Stars</option>
-                <option value="4">4 Stars</option>
-                <option value="5">5 Stars</option>
-            </select>
-            <button type="submit">Update Book</button>
-        </form>
-        <ul class="book-list" id="book-list">
-            <!-- Book entries will go here -->
-        </ul>
-        <div class="metrics">
-            <p>Total Books Read: <span id="total-books">0</span></p>
+        <!-- Placeholder for products -->
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
         </div>
-        <div class="current-reading" id="current-reading">
-            <img src="" alt="Current Book Cover" id="current-book-cover">
-            <p id="current-book-title">Currently Reading: None</p>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Product Image">
+            <h2>Product Title</h2>
+            <p>Product Description</p>
+            <button>Add to Cart</button>
         </div>
     </div>
-    <script>
-        const books = [
-            { title: "C is for Corpse", author: "Sue Grafton", pages: 288, date: "2024-01-15", stars: 4 },
-            { title: "The Fugitive", author: "John Grisham", pages: 400, date: "2024-02-20", stars: 5 }
-        ];
-
-        const currentBook = {
-            title: "C is for Corpse",
-            cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtzoc4IS3C4r1rZuwDvJ4IsvW1B_6vjIZJow&s"
-        };
-
-        const bookList = document.getElementById('book-list');
-        const totalBooksElement = document.getElementById('total-books');
-        const currentBookCover = document.getElementById('current-book-cover');
-        const currentBookTitle = document.getElementById('current-book-title');
-        const addBookForm = document.getElementById('add-book-form');
-        const editBookForm = document.getElementById('edit-book-form');
-        let totalBooks = books.length;
-
-        function displayBooks() {
-            bookList.innerHTML = '';
-            books.forEach((book, index) => {
-                const li = document.createElement('li');
-                li.className = 'book-item';
-                li.innerHTML = `
-                    <strong>${book.title}</strong> by ${book.author} <br>
-                    Pages: ${book.pages}, Completed: ${book.date}, Stars: ${book.stars}
-                    <button onclick="editBook(${index})">Edit</button>
-                `;
-                bookList.appendChild(li);
-            });
-            totalBooksElement.textContent = totalBooks;
-        }
-
-        function toggleForm(type, index) {
-            if (type === 'add') {
-                addBookForm.style.display = addBookForm.style.display === "none" || addBookForm.style.display === "" ? "flex" : "none";
-            } else if (type === 'edit') {
-                editBookForm.style.display = "flex";
-                addBookForm.style.display = "none";
-                const book = books[index];
-                document.getElementById('edit-index').value = index;
-                document.getElementById('edit-title').value = book.title;
-                document.getElementById('edit-author').value = book.author;
-                document.getElementById('edit-pages').value = book.pages;
-                document.getElementById('edit-date').value = book.date;
-                document.getElementById('edit-stars').value = book.stars;
-            }
-        }
-
-        function addBook(event) {
-            event.preventDefault();
-            const newBook = {
-                title: event.target.title.value,
-                author: event.target.author.value,
-                pages: event.target.pages.value,
-                date: event.target.date.value,
-                stars: event.target.stars.value
-            };
-            books.push(newBook);
-            totalBooks++;
-            displayBooks();
-            addBookForm.reset();
-            addBookForm.style.display = "none";
-        }
-
-        function editBook(index) {
-            toggleForm('edit', index);
-        }
-
-        function updateBook(event) {
-            event.preventDefault();
-            const index = document.getElementById('edit-index').value;
-            books[index] = {
-                title: event.target['edit-title'].value,
-                author: event.target['edit-author'].value,
-                pages: event.target['edit-pages'].value,
-                date: event.target['edit-date'].value,
-                stars: event.target['edit-stars'].value
-            };
-            displayBooks();
-            editBookForm.reset();
-            editBookForm.style.display = "none";
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            displayBooks();
-
-            if (currentBook.cover && currentBook.title) {
-                currentBookCover.src = currentBook.cover;
-                currentBookTitle.textContent = `Currently Reading: ${currentBook.title}`;
-            } else {
-                currentBookCover.style.display = 'none';
-                currentBookTitle.textContent = 'Currently Reading: None';
-            }
-        });
-    </script>
 </body>
 </html>
