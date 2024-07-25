@@ -17,3 +17,5 @@ API Gateway: Manage API endpoints.
 Cognito: User authentication and authorization.
 
 CloudFront: Content delivery network for fast content delivery.
+
+Use Github Pages: for hosting website
