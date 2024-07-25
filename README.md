@@ -18,4 +18,4 @@ Cognito: User authentication and authorization.
 
 CloudFront: Content delivery network for fast content delivery.
 
-Use Github Pages: for hosting website
+Github Pages: use for hosting website
