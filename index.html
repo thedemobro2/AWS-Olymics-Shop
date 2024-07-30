@@ -215,8 +215,32 @@
             modal.style.display = 'none';
         }
 
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Button Position</title>
+    <style>
+        .checkout-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #28a745; /* Green background */
+            color: white; /* White text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it stays on top of other elements */
+        }
+    </style>
+</head>
+<body>
+    <script>
         const checkoutButton = document.createElement('button');
         checkoutButton.textContent = 'Checkout';
+        checkoutButton.className = 'checkout-button';
         checkoutButton.onclick = function() {
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'https://thedemobro2.github.io/AWS-Olymics-Shop/checkout.html';
@@ -225,3 +249,4 @@
     </script>
 </body>
 </html>
+
