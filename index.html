@@ -103,6 +103,18 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .checkout-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #28a745; /* Green background */
+            color: white; /* White text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it stays on top of other elements */
+        }
     </style>
 </head>
 <body>
@@ -127,36 +139,37 @@
             <p>Product Description</p>
             <button>Add to Cart</button>
         </div>
-         <div class="product" data-title="Product 4" data-description="This is a detailed description of Product 3" data-price="39.99">
+        <div class="product" data-title="Product 4" data-description="This is a detailed description of Product 3" data-price="39.99">
             <img src="https://via.placeholder.com/150" alt="Product Image">
             <h2>Product Title 4</h2>
             <p>Product Description</p>
             <button>Add to Cart</button>
         </div>
-         <div class="product" data-title="Product 5" data-description="This is a detailed description of Product 3" data-price="39.99">
+        <div class="product" data-title="Product 5" data-description="This is a detailed description of Product 3" data-price="39.99">
             <img src="https://via.placeholder.com/150" alt="Product Image">
             <h2>Product Title 5</h2>
             <p>Product Description</p>
             <button>Add to Cart</button>
         </div>
-         <div class="product" data-title="Product 6" data-description="This is a detailed description of Product 3" data-price="39.99">
+        <div class="product" data-title="Product 6" data-description="This is a detailed description of Product 3" data-price="39.99">
             <img src="https://via.placeholder.com/150" alt="Product Image">
             <h2>Product Title 6</h2>
             <p>Product Description</p>
             <button>Add to Cart</button>
         </div>
-         <div class="product" data-title="Product 7" data-description="This is a detailed description of Product 3" data-price="39.99">
+        <div class="product" data-title="Product 7" data-description="This is a detailed description of Product 3" data-price="39.99">
             <img src="https://via.placeholder.com/150" alt="Product Image">
             <h2>Product Title 7</h2>
             <p>Product Description</p>
             <button>Add to Cart</button>
         </div>
-         <div class="product" data-title="Product 8" data-description="This is a detailed description of Product 3" data-price="39.99">
+        <div class="product" data-title="Product 8" data-description="This is a detailed description of Product 3" data-price="39.99">
             <img src="https://via.placeholder.com/150" alt="Product Image">
             <h2>Product Title 8</h2>
             <p>Product Description</p>
             <button>Add to Cart</button>
         </div>
+    </div>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -215,29 +228,6 @@
             modal.style.display = 'none';
         }
 
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout Button Position</title>
-    <style>
-        .checkout-button {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            padding: 10px 20px;
-            background-color: #28a745; /* Green background */
-            color: white; /* White text */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 1000; /* Ensure it stays on top of other elements */
-        }
-    </style>
-</head>
-<body>
-    <script>
         const checkoutButton = document.createElement('button');
         checkoutButton.textContent = 'Checkout';
         checkoutButton.className = 'checkout-button';
@@ -249,4 +239,3 @@
     </script>
 </body>
 </html>
-
